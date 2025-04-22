@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Notícia</title>
+    <link rel="stylesheet" href="style.CSS">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body>
+    <header class="header-box">
+        <a href="index.html">
+            <img class="logo" src="logo.png" alt="Logo do site">
+        </a>
+    </header>
+
+    <main class="container py-4">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Página Inicial</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detalhes da Notícia</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-4"></h1>
+                
+                <div class="conteudo">
+                </div>
+
+                <div class="imagens-complementares mt-4">
+                    <h3 class="mb-3">Imagens Complementares</h3>
+                    <div class="row g-3">
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="bi bi-arrow-left"></i> Voltar para a página inicial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-5">
+        <h2>Informações do Aluno</h2>
+        <h3>Sobre</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet qui sint id. Earum saepe nisi tempora mollitia
+            maxime veniam ab adipisci aut culpa, illum molestias velit voluptatum delectus. Accusantium, quisquam.</p>
+        <h3>Autoria</h3>
+        <img class="perfil" src="perfil.jpg" alt="perfil">
+        <p>
+            <strong>Aluno:</strong> Pedro Nunes Cruz<br>
+            <strong>Curso:</strong> Sistema de Informação<br>
+            <strong>Turma:</strong> Noite
+        </p>
+        <div class="social">
+            <h3><span>Redes Sociais:</span></h3>
+            <a href="https://www.instagram.com/_nunes000/" target="_blank">
+                <img class="insta" src="insta.jpg" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const noticiaId = parseInt(params.get('id'));
+
+            const noticia = dados.noticias.find(item => item.id === noticiaId);
+
+            if (noticia) {
+                document.title = noticia.titulo;
+                document.querySelector('h1').textContent = noticia.titulo;
+                
+                document.querySelector('.conteudo').innerHTML = `
+                    <div class="card mb-4">
+                        <img src="${noticia.imagem_pincipal}" class="card-img-top" alt="${noticia.titulo}">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <span class="badge bg-primary">${noticia.categoria}</span>
+                                <small class="text-muted ms-2">Por ${noticia.autor} • ${new Date(noticia.data).toLocaleDateString('pt-BR')}</small>
+                            </div>
+                            <p class="card-text">${noticia.conteudo}</p>
+                        </div>
+                    </div>
+                `;
+
+                const imagensContainer = document.querySelector('.imagens-complementares .row');
+                if (noticia.imagens_complementares && noticia.imagens_complementares.length > 0) {
+                    noticia.imagens_complementares.forEach((imagem) => {
+                        const imgElement = `
+                            <div class="col-4">
+                                <img src="${imagem.src}" alt="${imagem.descricao}" class="img-thumbnail"> <!-- Caminho atualizado -->
+                            </div>
+                        `;
+                        imagensContainer.innerHTML += imgElement;
+                    });
+                } else {
+                    document.querySelector('.imagens-complementares').style.display = 'none';
+                }
+            } else {
+                document.querySelector('h1').textContent = 'Notícia não encontrada';
+                document.querySelector('.conteudo').innerHTML = `
+                    <div class="alert alert-danger">
+                        <h4 class="alert-heading">Ops!</h4>
+                        <p>Não foi possível encontrar a notícia solicitada.</p>
+                        <hr>
+                        <p class="mb-0">Por favor, volte à página inicial e tente novamente.</p>
+                    </div>
+                `;
+                document.querySelector('.imagens-complementares').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

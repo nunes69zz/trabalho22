@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.CSS">
+    <title>TRABALHO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <header class="header-box">
+        <div class="header-content">
+            <div class="logo-title">
+                <img class="logo" src="img/logo.png" alt="Logo do site">
+                <h2>Itens em Destaque</h2>
+            </div>
+            <div class="search-container">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="detalhes.html?id=1">
+                    <img class="noticia" src="img/mobilidade.jpg" class="d-block w-100" alt="Mobilidade Urbana"> <!-- Caminho atualizado -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Mobilidade Urbana</h5>
+                        <p>Novo plano de mobilidade urbana para a cidade.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="detalhes.html?id=2">
+                    <img class="noticia" src="img/tecnologia_6g.jpg" class="d-block w-100" alt="Tecnologia 6G"> <!-- Caminho atualizado -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Tecnologia 6G</h5>
+                        <p>O futuro da conectividade está chegando.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="detalhes.html?id=3">
+                    <img class="noticia" src="img/festival_musica.jpg" class="d-block w-100" alt="Festival de Música"> <!-- Caminho atualizado -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Festival de Música</h5>
+                        <p>Grande evento cultural movimenta a cidade.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <main>
+        <h2>Todos os Itens</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+        </div>
+    </main>
+    <footer>
+        <h2>Informações do Aluno</h2>
+        <h3>Sobre</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet qui sint id. Earum saepe nisi tempora mollitia
+            maxime veniam ab adipisci aut culpa, illum molestias velit voluptatum delectus. Accusantium, quisquam.</p>
+        <h3>Autoria</h3>
+        <img class = "perfil" src="perfil.jpg" alt="perfil">
+        <p>
+            <strong>Aluno:</strong> Pedro Nunes Cruz<br>
+            <strong>Curso:</strong> Sistema de Informação<br>
+            <strong>Turma:</strong> Noite
+        </p>
+        <div class="social">
+            <h3><span>Redes Sociais:</span></h3>
+            <a href="https://www.instagram.com/_nunes000/" target="_blank">
+                <img class="insta" src="insta.jpg" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const noticiasContainer = document.querySelector('.row'); // Seleciona o contêiner dos cards
+
+            dados.noticias.forEach((noticia) => {
+                const card = `
+                    <div class="col">
+                        <div class="card">
+                            <img src="${noticia.imagem_pincipal}" class="card-img-top" alt="${noticia.titulo}">
+                            <div class="card-body">
+                                <h5 class="card-title">${noticia.titulo}</h5>
+                                <p class="card-text">${noticia.descricao}</p> <!-- Exibe a descrição -->
+                                <a href="detalhes.html?id=${noticia.id}" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                noticiasContainer.innerHTML += card;
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
