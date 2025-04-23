@@ -41,7 +41,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <a href="detalhes.html?id=1">
-                    <img class="noticia" src="img/mobilidade.jpg" class="d-block w-100" alt="Mobilidade Urbana"> <!-- Caminho atualizado -->
+                    <img class="noticia" src="img/mobilidade.jpg" class="d-block w-100" alt="Mobilidade Urbana">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Mobilidade Urbana</h5>
                         <p>Novo plano de mobilidade urbana para a cidade.</p>
@@ -50,7 +50,7 @@
             </div>
             <div class="carousel-item">
                 <a href="detalhes.html?id=2">
-                    <img class="noticia" src="img/tecnologia_6g.jpg" class="d-block w-100" alt="Tecnologia 6G"> <!-- Caminho atualizado -->
+                    <img class="noticia" src="img/tecnologia_6g.jpg" class="d-block w-100" alt="Tecnologia 6G">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Tecnologia 6G</h5>
                         <p>O futuro da conectividade está chegando.</p>
@@ -59,7 +59,7 @@
             </div>
             <div class="carousel-item">
                 <a href="detalhes.html?id=3">
-                    <img class="noticia" src="img/festival_musica.jpg" class="d-block w-100" alt="Festival de Música"> <!-- Caminho atualizado -->
+                    <img class="noticia" src="img/festival_musica.jpg" class="d-block w-100" alt="Festival de Música">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Festival de Música</h5>
                         <p>Grande evento cultural movimenta a cidade.</p>
@@ -89,7 +89,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet qui sint id. Earum saepe nisi tempora mollitia
             maxime veniam ab adipisci aut culpa, illum molestias velit voluptatum delectus. Accusantium, quisquam.</p>
         <h3>Autoria</h3>
-        <img class = "perfil" src="perfil.jpg" alt="perfil">
+        <img class = "perfil" src="img/perfil.jpg" alt="perfil">
         <p>
             <strong>Aluno:</strong> Pedro Nunes Cruz<br>
             <strong>Curso:</strong> Sistema de Informação<br>
@@ -98,13 +98,14 @@
         <div class="social">
             <h3><span>Redes Sociais:</span></h3>
             <a href="https://www.instagram.com/_nunes000/" target="_blank">
-                <img class="insta" src="insta.jpg" alt="Instagram">
+                <img class="insta" src="img/insta.jpg" alt="Instagram">
             </a>
         </div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const noticiasContainer = document.querySelector('.row'); // Seleciona o contêiner dos cards
+            const noticiasContainer = document.querySelector('.row');
+            noticiasContainer.innerHTML = '';
 
             dados.noticias.forEach((noticia) => {
                 const card = `
@@ -113,7 +114,7 @@
                             <img src="${noticia.imagem_pincipal}" class="card-img-top" alt="${noticia.titulo}">
                             <div class="card-body">
                                 <h5 class="card-title">${noticia.titulo}</h5>
-                                <p class="card-text">${noticia.descricao}</p> <!-- Exibe a descrição -->
+                                <p class="card-text">${noticia.descricao}</p>
                                 <a href="detalhes.html?id=${noticia.id}" class="btn btn-primary">Leia mais</a>
                             </div>
                         </div>
@@ -123,7 +124,6 @@
             });
         });
     </script>
-    
 </body>
 
 </html>

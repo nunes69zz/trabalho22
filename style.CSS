@@ -13,12 +13,28 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Garante que o conteúdo da página esteja centralizado e justificado */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #00bfff, #e9ecef);
+    color: #333;
+    overflow-x: hidden; /* Remove a rolagem horizontal */
+    text-align: justify; /* Justifica o texto */
+}
+
 .header-box {
     background-color: #f8f9fa;
     border: 2px solid #ddd;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os elementos */
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -26,8 +42,8 @@
 .header-box .logo {
     display: block;
     margin: 0 auto 10px auto;
-    width: 120px;
-    height: auto;
+    width: 100px; /* Reduz o tamanho do logo */
+    height: 100px;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
@@ -38,18 +54,9 @@
 }
 
 .header-box h2 {
-    font-size: 24px;
+    font-size: 18px; /* Reduz o tamanho do título */
     color: #333;
     margin: 0;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #00bfff, #e9ecef);
-    color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,6 +82,7 @@ main {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: justify; /* Justifica o texto dentro do main */
 }
 
 .cards-container {
@@ -198,6 +206,10 @@ footer .social img:hover {
     transform: scale(1.2);
 }
 
+footer p {
+    text-align: justify; /* Justifica o texto no rodapé */
+}
+
 .carousel {
     display: flex;
     justify-content: center;
@@ -252,10 +264,15 @@ footer .social img:hover {
 }
 
 .search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Faz o campo de pesquisa ocupar toda a largura */
+    max-width: 400px; /* Define um limite máximo */
     min-width: 300px;
 }
 
 .search-container .form-control {
+    flex: 1; /* Faz o input ocupar o máximo de espaço possível */
     border-radius: 20px 0 0 20px;
     border: 1px solid #ddd;
 }
@@ -263,4 +280,112 @@ footer .social img:hover {
 .search-container .btn {
     border-radius: 0 20px 20px 0;
     padding: 8px 20px;
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container .btn:hover {
+    background-color: #008fcc;
+}
+
+.imagens-complementares .row img {
+    width: 100%; /* Faz a imagem ocupar toda a largura do contêiner */
+    height: 150px; /* Define uma altura fixa */
+    object-fit: cover; /* Garante que a imagem seja cortada proporcionalmente */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+}
+
+.imagens-complementares .row p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Media Queries para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Ajuste do cabeçalho */
+    .header-box {
+        text-align: center;
+        padding: 10px;
+        gap: 15px; /* Espaçamento maior entre os elementos */
+    }
+
+    .header-box .logo {
+        width: 80px; /* Reduz ainda mais o tamanho do logo */
+        height: 80px;
+    }
+
+    .header-box h2 {
+        font-size: 16px; /* Reduz o tamanho do título */
+    }
+
+    /* Ajuste do carrossel */
+    .carousel img {
+        height: 200px; /* Reduz a altura das imagens no carrossel */
+        object-fit: cover;
+    }
+
+    .carousel-caption {
+        font-size: 14px; /* Reduz o tamanho do texto no carrossel */
+        padding: 5px; /* Adiciona espaçamento interno */
+    }
+
+    /* Ajuste dos cards */
+    .row {
+        flex-direction: column; /* Empilha os cards verticalmente */
+    }
+
+    .col {
+        flex: 0 0 100%; /* Faz os cards ocuparem toda a largura */
+        padding: 10px;
+    }
+
+    .card img {
+        height: 150px; /* Reduz a altura das imagens nos cards */
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 16px; /* Reduz o tamanho do título dos cards */
+    }
+
+    .card-text {
+        font-size: 12px; /* Reduz o tamanho do texto dos cards */
+    }
+
+    /* Ajuste do campo de pesquisa */
+    .search-container {
+        flex-direction: column; /* Empilha o input e o botão verticalmente */
+        max-width: 100%; /* Remove o limite de largura */
+    }
+
+    .search-container .form-control {
+        border-radius: 20px; /* Bordas arredondadas para o input */
+        margin-bottom: 10px; /* Espaçamento entre o input e o botão */
+    }
+
+    .search-container .btn {
+        border-radius: 20px; /* Bordas arredondadas para o botão */
+        width: 100%; /* Faz o botão ocupar toda a largura */
+    }
+
+    /* Ajuste do rodapé */
+    footer {
+        text-align: center;
+        padding: 20px;
+    }
+
+    footer .perfil {
+        width: 80px; /* Reduz o tamanho da imagem de perfil */
+        height: 80px;
+        border-radius: 50%;
+    }
+
+    footer p {
+        font-size: 12px; /* Reduz o tamanho do texto no rodapé */
+    }
 }
